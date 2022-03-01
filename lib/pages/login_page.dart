@@ -13,6 +13,19 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
+  moveToHome(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      setState(() {
+        changeButton = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -66,6 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                             fontStyle: FontStyle.italic,
                           ),
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Username Cannot be empty";
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: 15,
@@ -88,6 +107,14 @@ class _LoginPageState extends State<LoginPage> {
                             fontStyle: FontStyle.italic,
                           ),
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Password Cannot be empty";
+                          } else if (value.length < 6) {
+                            return "Password Length Should be atleast 6";
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: 20,
@@ -97,17 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius:
                             BorderRadius.circular(changeButton ? 25 : 10),
                         child: InkWell(
-                          onTap: () async {
-                            setState(() {
-                              changeButton = true;
-                            });
-                            await Future.delayed(Duration(seconds: 1));
-                            await Navigator.pushNamed(
-                                context, MyRoutes.homeRoute);
-                            setState(() {
-                              changeButton = false;
-                            });
-                          },
+                          onTap: () => moveToHome(context),
                           child: AnimatedContainer(
                             duration: Duration(seconds: 1),
                             width: changeButton ? 50 : 200,
