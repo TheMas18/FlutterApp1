@@ -1,0 +1,27 @@
+{
+    "products": [{
+            "id": 1,
+            "name": "Iphone 11",
+            "desc": "Apple iphone 11 64gb red",
+            "price": 999,
+            "color": "red",
+            "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cultofmac.com%2F653586%2Fiphone-11-first-impressions%2F&psig=AOvVaw0VJOVj-XZpAxu2rb4gQoTG&ust=1646222839328000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJDJkI_wpPYCFQAAAAAdAAAAABAK"
+        },
+        {
+            "id": 1,
+            "name": "Iphone 12",
+            "desc": "Apple iphone 12 64gb red",
+            "price": 222,
+            "color": "red",
+            "image": "././assets/images/ProductImages/Smartphones/iphone11red1.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Iphone 13",
+            "desc": "Apple iphone 13 64gb red",
+            "price": 111,
+            "color": "red",
+            "image": "././assets/images/ProductImages/Smartphones/iphone11red1.jpg"
+        }
+    ]
+}

@@ -1,9 +1,13 @@
 // ignore_for_file: unused_import, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:myfinalapp/pages/ExperiMent5.dart';
+import 'package:myfinalapp/pages/experiment3.dart';
 import 'package:myfinalapp/pages/experiment_page.dart';
 import 'package:myfinalapp/pages/home_page.dart';
 import 'package:myfinalapp/pages/login_page.dart';
+import 'package:myfinalapp/pages/signup_page.dart';
+import 'package:myfinalapp/pages/welcome_page.dart';
 import 'package:myfinalapp/utils/routes.dart';
 import 'package:myfinalapp/widgets/themes.dart';
 
@@ -20,9 +24,12 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
       routes: {
-        "/": (context) => HomePage(),
+        "/": (context) => ExperiMent(),
         MyRoutes.homeRoute: (Context) => HomePage(),
         MyRoutes.loginRoute: (Context) => LoginPage(),
+        MyRoutes.SignupRoute: (Context) => SignupPage(),
+        MyRoutes.exp5Route: (Context) => Experiment5(),
+        MyRoutes.exp3Route: (Context) => Experiment3(),
       },
     );
   }

@@ -1,20 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:myfinalapp/pages/signup_page.dart';
+import 'package:myfinalapp/pages/login_page.dart';
 import 'package:myfinalapp/pages/welcome_page.dart';
 import 'package:myfinalapp/utils/routes.dart';
 
 
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
   moveToHome(BuildContext context) async {
@@ -74,10 +73,10 @@ class _LoginPageState extends State<LoginPage> {
                       )),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 25,
                 ),
                 Text(
-                  "Login Here",
+                  "SignUp Here",
                   style: TextStyle(color: Colors.white, fontSize: 60),
                 ),
                 Padding(
@@ -100,10 +99,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Colors.blue.shade900, width: 2.0),
+                                color: Colors.blue.shade300, width: 2.0),
                             borderRadius: BorderRadius.circular(28),
                           ),
-                          hintText: "Enter Username",
+                          hintText: "Enter Email",
                           hintStyle: TextStyle(
                             color: Colors.blue,
                             fontSize: 15,
@@ -118,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       SizedBox(
-                        height: 25,
+                        height: 18,
                       ),
                       TextFormField(
                         style: TextStyle(color: Colors.white),
@@ -154,29 +153,65 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       SizedBox(
+                        height: 18,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.white),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(28),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.blue.shade100, width: 2.0),
+                            borderRadius: BorderRadius.circular(28),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.blue.shade300, width: 2.0),
+                            borderRadius: BorderRadius.circular(28),
+                          ),
+                          hintText: "Confirm Password",
+                          hintStyle: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontStyle: FontStyle.normal,
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Password Cannot be empty";
+                          } else if (value.length < 6) {
+                            return "Password Length Should be atleast 6";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(
                         height: 20,
                       ),
-                      Material(
-                        color: Colors.blue,
-                        borderRadius:
-                            BorderRadius.circular(changeButton ? 25 : 30),
-                        child: InkWell(
-                          onTap: () => moveToHome(context),
-                          child: AnimatedContainer(
-                            duration: Duration(seconds: 1),
-                            width: changeButton ? 50 : 200,
-                            height: 50,
-                            alignment: Alignment.center,
-                            child: changeButton
-                                ? Icon(Icons.done, color: Colors.white)
-                                : Text(
-                                    "Login",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
-                          ),
+                      SizedBox(
+                        height: 60, //height of button
+                        width: 250,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shadowColor: Colors.blue[900],
+                              primary:
+                                  Colors.black, //background color of button
+                              side: BorderSide(
+                                  width: 2,
+                                  color: Colors
+                                      .blueAccent), //border width and color
+                              elevation: 3, //elevation of button
+                              shape: RoundedRectangleBorder(
+                                  //to set border radius to button
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: EdgeInsets.all(
+                                  20) //content padding inside button
+                              ),
+                          onPressed: () => moveToHome(context),
+                          child: Text("Create", style: TextStyle(fontSize: 20)),
                         ),
                       ),
                       SizedBox(
@@ -185,7 +220,7 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Don't have an account? ",
+                            Text("Already have an account? ",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.red,
@@ -195,10 +230,10 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SignupPage()));
+                                        builder: (context) => LoginPage()));
                               },
                               child: Text(
-                                "SignUp",
+                                "Login",
                                 style: TextStyle(
                                     color: Colors.limeAccent,
                                     fontWeight: FontWeight.bold,
