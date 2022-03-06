@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfinalapp/pages/ExperiMent5.dart';
 import 'package:myfinalapp/pages/experiment3.dart';
+import 'package:myfinalapp/pages/experiment4.dart';
 import 'package:myfinalapp/pages/experiment_page.dart';
 import 'package:myfinalapp/pages/home_page.dart';
 import 'package:myfinalapp/pages/login_page.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.SignupRoute: (Context) => SignupPage(),
         MyRoutes.exp5Route: (Context) => Experiment5(),
         MyRoutes.exp3Route: (Context) => Experiment3(),
+        MyRoutes.exp4Route: (Context) => ExperiMent4(),
       },
     );
   }
